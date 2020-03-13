@@ -72,35 +72,27 @@ $(document).ready(function() {
     // Display the current time at the bottom of the jumbotron/header
     $("#currentDay").text(moment().format("dddd, MMMM Do"));
 
-
-
+    // CALENDARCEPTION
+    // ADDED FEATURE: I have added a "add to calendar" feature to allow the user to add this workday to another calendar
     function updateAddCalendar() {
         // Clear the add to calendar div children if there are any
         $('.new-cal').empty();
         
-        // Add any hour text sections to the add to calendar feature description
-        var description = localStorage.getItem("hour-9") + "\n" + 
-        localStorage.getItem("hour-10") + "\n" + 
-        localStorage.getItem("hour-11") + "\n" + 
-        localStorage.getItem("hour-12") + "\n" + 
-        localStorage.getItem("hour-13") + "\n" + 
-        localStorage.getItem("hour-14") + "\n" + 
-        localStorage.getItem("hour-15") + "\n" + 
-        localStorage.getItem("hour-16") + "\n" + 
-        localStorage.getItem("hour-17");
-
+        // Add text sections to the add to calendar feature description
         var descriptionTwo = '';
-
-
+        // Loop through as many hour blocks as there are
         for (i = 0; i< 9; i++) {
-            
+            // set the hour block's text to a textValue variable
             var textValue = localStorage.getItem("hour-" + (9+i).toString());
+            // If there is some text, and the time is before noon, add it to the description variable
             if (textValue !== null && i < 3){
                 descriptionTwo += (i+9).toString() + "am: " + textValue + "\n";
             }
+            // If there is some text, and the time is noon, add it to the description variable
             else if (textValue !== null && i === 3){
                 descriptionTwo += (i+9).toString() + "pm: " + textValue + "\n";
             }
+            // If there is some text, and the time is after noon, add it to the description variable
             else if (textValue !== null && i > 3){
                 descriptionTwo += (i-3).toString() + "pm: " + textValue + "\n";
             }
@@ -108,16 +100,20 @@ $(document).ready(function() {
 
         // Create a calendar object for adding the workday schedule to another calendar
         var myCalendar = createCalendar({
+            // Create a data object
             data: {
+                // Static title
                 title: 'Workday Schedule',
+                // Dynamic start of day
                 start: new Date(moment().format('ll') + " 9:00"),
-                duration: 120,
+                // Dynamic end of day
                 end: new Date(moment().format('ll') + " 17:00"),
+                // Add description that was created above
                 description: descriptionTwo
             }
         });
         
-        // Add the calendat options to the new-cal div in the jumbotron/header
+        // Add the calendar options to the new-cal div in the jumbotron/header
         document.querySelector('.new-cal').appendChild(myCalendar);
     }
     // Update the add to calendar feature once on page load
