@@ -9,6 +9,6 @@ This daily planner features an easy to read layout so anyone using it can stay f
 The most challenging part of this project was adding the "add to calendar" feature. It uses a third-party script that I had to fully comprehend before I could start to work with it and manipulate it's functionality.
 
 ## Not-Included
-If I had more time to work on this project, I would probably over-haul the interface. It's easy to use, as of now, but I would like to add my own feel to the page. I would also add a feature so the user could save previous days and plan out future days. At that point, it would be like any other fully functioning calendar app.
+If I had more time to work on this project, I would probably over-haul the interface. It's easy to use, as of now, but I would like to add my own feel to the project. I would also add a feature so the user could save previous days and plan out future days. At that point, it would be like any other fully functioning calendar app, but that would be a great way to work on my dev skills.
 
 ### Thanks for checking out this project!
